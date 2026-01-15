@@ -9,7 +9,9 @@ load_dotenv(BASE_DIR / ".env")
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "dev-secret-key-change-me")
 DEBUG = os.getenv("DEBUG", "True").lower() == "true"
 
-ALLOWED_HOSTS = [h.strip() for h in os.getenv("ALLOWED_HOSTS", "127.0.0.1,localhost").split(",") if h.strip()]
+ALLOWED_HOSTS = os.getenv("ALLOWED_HOSTS", ".onrender.com,localhost,127.0.0.1").split(",")
+ALLOWED_HOSTS = [h.strip() for h in ALLOWED_HOSTS if h.strip()]
+
 
 INSTALLED_APPS = [
     "django.contrib.admin",
